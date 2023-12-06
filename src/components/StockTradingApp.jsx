@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { TextField, Button, Container, Typography, Box } from "@mui/material";
+import BasicTabel from "./BasicTabel";
+
+const textFieldMargin = {
+  mr: "20px",
+  width: "100px",
+};
 
 const StockTradingApp = () => {
   const [boughtPrice, setBoughtPrice] = useState("");
@@ -58,18 +64,21 @@ const StockTradingApp = () => {
       <Box py="20px" textAlign="center">
         <TextField
           size="small"
+          sx={textFieldMargin}
           placeholder="Stock Entry Price"
           value={boughtPrice}
           onChange={handleBoughtPriceChange}
         />
         <TextField
           size="small"
+          sx={textFieldMargin}
           placeholder="ATR"
           value={atr}
           onChange={handleAtrChange}
         />
         <TextField
           size="small"
+          sx={textFieldMargin}
           placeholder="Total Amount"
           value={totalAmount}
           autoComplete="off"
@@ -77,6 +86,7 @@ const StockTradingApp = () => {
         />
         <TextField
           size="small"
+          sx={textFieldMargin}
           placeholder="Risk Percentage"
           value={riskPercentage}
           autoComplete="off"
@@ -86,12 +96,14 @@ const StockTradingApp = () => {
           Calculate
         </Button>
       </Box>
-      <Box>
-        <Typography variant="h5">Position Size - {positionSize}</Typography>
-        <Typography variant="h5">Stoploss - {stopLoss}</Typography>
-        <Typography variant="h5">Target - {target}</Typography>
-        <Typography variant="h5">Amount Used - {amountUsed}</Typography>
-        <Typography variant="h5">Remaining Amount - {remaningAmt}</Typography>
+      <Box width={800} margin="auto" py="20px">
+        <BasicTabel
+          target={target}
+          stopLoss={stopLoss}
+          positionSize={positionSize}
+          amountUsed={amountUsed}
+          remaningAmt={remaningAmt}
+        />
       </Box>
     </Container>
   );
