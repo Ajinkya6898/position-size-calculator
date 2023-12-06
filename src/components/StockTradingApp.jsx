@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Container, Typography } from "@mui/material";
+import { TextField, Button, Container, Typography, Box } from "@mui/material";
 
 const StockTradingApp = () => {
   const [boughtPrice, setBoughtPrice] = useState("");
@@ -49,8 +49,13 @@ const StockTradingApp = () => {
   };
 
   return (
-    <>
-      <Container>
+    <Container sx={{ backgroundColor: "white" }}>
+      <Box py="20px">
+        <Typography variant="h5" textAlign="center">
+          Position Size Calculater
+        </Typography>
+      </Box>
+      <Box py="20px" textAlign="center">
         <TextField
           size="small"
           placeholder="Stock Entry Price"
@@ -67,26 +72,28 @@ const StockTradingApp = () => {
           size="small"
           placeholder="Total Amount"
           value={totalAmount}
+          autoComplete="off"
           onChange={handleTotalAmountChange}
         />
         <TextField
           size="small"
           placeholder="Risk Percentage"
           value={riskPercentage}
+          autoComplete="off"
           onChange={handleRiskPercentageChange}
         />
         <Button variant="contained" onClick={calculateValues}>
           Calculate
         </Button>
-      </Container>
-      <Container>
+      </Box>
+      <Box>
         <Typography variant="h5">Position Size - {positionSize}</Typography>
         <Typography variant="h5">Stoploss - {stopLoss}</Typography>
         <Typography variant="h5">Target - {target}</Typography>
         <Typography variant="h5">Amount Used - {amountUsed}</Typography>
         <Typography variant="h5">Remaining Amount - {remaningAmt}</Typography>
-      </Container>
-    </>
+      </Box>
+    </Container>
   );
 };
 
