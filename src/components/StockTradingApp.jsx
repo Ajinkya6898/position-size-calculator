@@ -1,109 +1,28 @@
+// StockTradingApp.jsx
 import React, { useState } from "react";
-import { TextField, Button, Container, Typography, Box } from "@mui/material";
-import BasicTabel from "./BasicTabel";
-
-const textFieldMargin = {
-  mr: "20px",
-  width: "100px",
-};
+import { Container, Typography, Box } from "@mui/material";
+import StockForm from "./StockForm";
+import BasicTable from "./BasicTabel";
 
 const StockTradingApp = () => {
-  const [boughtPrice, setBoughtPrice] = useState("");
-  const [atr, setAtr] = useState("");
-  const [totalAmount, setTotalAmount] = useState("200000");
-  const [riskPercentage, setRiskPercentage] = useState("1");
-  const [target, setTarget] = useState("");
-  const [stopLoss, setStopLoss] = useState("");
-  const [positionSize, setPositionSize] = useState("");
-  const [amountUsed, setAmountUsed] = useState("");
-  const [remaningAmt, setRemaningAmt] = useState("");
+  const [stocks, setStocks] = useState([]);
 
-  const handleBoughtPriceChange = (e) => {
-    setBoughtPrice(e.target.value);
-  };
-
-  const handleAtrChange = (e) => {
-    setAtr(e.target.value);
-  };
-
-  const handleTotalAmountChange = (e) => {
-    setTotalAmount(e.target.value);
-  };
-
-  const handleRiskPercentageChange = (e) => {
-    setRiskPercentage(e.target.value);
-  };
-
-  const calculateValues = () => {
-    const targetLevel = +boughtPrice + +atr;
-    setTarget(targetLevel);
-
-    const halfOfAtr = +atr * 0.5;
-    const stoplossLevel = +boughtPrice - halfOfAtr;
-    setStopLoss(stoplossLevel);
-
-    const riskPerTrade = (totalAmount * riskPercentage) / 100;
-    const positionSizeValue = Math.floor(
-      riskPerTrade / (boughtPrice - stoplossLevel)
-    );
-    setPositionSize(positionSizeValue);
-
-    const totalTradeAmt = +boughtPrice * positionSizeValue;
-    setAmountUsed(totalTradeAmt);
-
-    setRemaningAmt(totalAmount - totalTradeAmt);
+  const addStock = (stock) => {
+    setStocks([...stocks, stock]);
   };
 
   return (
-    <Container sx={{ backgroundColor: "white" }}>
+    <Container sx={{ backgroundColor: "white", mt: "50px" }}>
       <Box py="20px">
         <Typography variant="h5" textAlign="center">
-          Position Size Calculater
+          Position Size Calculator
         </Typography>
       </Box>
       <Box py="20px" textAlign="center">
-        <TextField
-          size="small"
-          sx={textFieldMargin}
-          placeholder="Stock Entry Price"
-          value={boughtPrice}
-          onChange={handleBoughtPriceChange}
-        />
-        <TextField
-          size="small"
-          sx={textFieldMargin}
-          placeholder="ATR"
-          value={atr}
-          onChange={handleAtrChange}
-        />
-        <TextField
-          size="small"
-          sx={textFieldMargin}
-          placeholder="Total Amount"
-          value={totalAmount}
-          autoComplete="off"
-          onChange={handleTotalAmountChange}
-        />
-        <TextField
-          size="small"
-          sx={textFieldMargin}
-          placeholder="Risk Percentage"
-          value={riskPercentage}
-          autoComplete="off"
-          onChange={handleRiskPercentageChange}
-        />
-        <Button variant="contained" onClick={calculateValues}>
-          Calculate
-        </Button>
+        <StockForm addStock={addStock} />
       </Box>
-      <Box width={800} margin="auto" py="20px">
-        <BasicTabel
-          target={target}
-          stopLoss={stopLoss}
-          positionSize={positionSize}
-          amountUsed={amountUsed}
-          remaningAmt={remaningAmt}
-        />
+      <Box width={1000} margin="auto" py="20px">
+        <BasicTable stocks={stocks} />
       </Box>
     </Container>
   );

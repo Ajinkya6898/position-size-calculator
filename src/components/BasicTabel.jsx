@@ -1,3 +1,4 @@
+// BasicTable.jsx
 import React from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -23,42 +24,57 @@ const alignMiddle = {
   textAlign: "center",
 };
 
-const BasicTabel = ({
-  target,
-  stopLoss,
-  positionSize,
-  amountUsed,
-  remaningAmt,
-}) => {
+const BasicTable = ({ stocks }) => {
   return (
     <>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
+              <StyledTableCell>#</StyledTableCell>
               <StyledTableCell>Stoploss</StyledTableCell>
               <StyledTableCell>Target</StyledTableCell>
               <StyledTableCell>Position Size</StyledTableCell>
+
+              <StyledTableCell>Stoploss %</StyledTableCell>
+              <StyledTableCell>Target %</StyledTableCell>
+              <StyledTableCell>R Multiple</StyledTableCell>
               <StyledTableCell>Amount Used</StyledTableCell>
               <StyledTableCell>Remaining Amount</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow
-              sx={{
-                "&:last-child td, &:last-child th": {
-                  border: 0,
-                },
-              }}
-            >
-              <TableCell sx={alignMiddle} component="th" scope="row">
-                {stopLoss}
-              </TableCell>
-              <TableCell sx={alignMiddle}>{target}</TableCell>
-              <TableCell sx={alignMiddle}>{positionSize}</TableCell>
-              <TableCell sx={alignMiddle}>{amountUsed}</TableCell>
-              <TableCell sx={alignMiddle}>{remaningAmt}</TableCell>
-            </TableRow>
+            {stocks.map((stock, index) => (
+              <TableRow key={index}>
+                <TableCell sx={alignMiddle}>{index + 1}</TableCell>
+                <TableCell sx={alignMiddle}>{stock.stopLoss}</TableCell>
+                <TableCell sx={alignMiddle}>{stock.target}</TableCell>
+                <TableCell sx={alignMiddle}>{stock.positionSize}</TableCell>
+
+                <TableCell sx={alignMiddle}>
+                  {(
+                    ((stock.stopLoss - stock.boughtPrice) / stock.boughtPrice) *
+                    100
+                  ).toFixed(2)}
+                  %
+                </TableCell>
+                <TableCell sx={alignMiddle}>
+                  {(
+                    ((stock.target - stock.boughtPrice) / stock.boughtPrice) *
+                    100
+                  ).toFixed(2)}
+                  %
+                </TableCell>
+                <TableCell sx={alignMiddle}>
+                  {(
+                    (stock.target - stock.boughtPrice) /
+                    (stock.boughtPrice - stock.stopLoss)
+                  ).toFixed(2)}
+                </TableCell>
+                <TableCell sx={alignMiddle}>{stock.amountUsed}</TableCell>
+                <TableCell sx={alignMiddle}>{stock.remainingAmt}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
@@ -66,4 +82,4 @@ const BasicTabel = ({
   );
 };
 
-export default BasicTabel;
+export default BasicTable;
