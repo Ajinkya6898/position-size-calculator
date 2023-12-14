@@ -1,6 +1,7 @@
 // BasicTable.jsx
 import React from "react";
 import { styled } from "@mui/material/styles";
+import { Button } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -8,6 +9,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import EditNoteRoundedIcon from "@mui/icons-material/EditNoteRounded";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,6 +44,8 @@ const BasicTable = ({ stocks }) => {
               <StyledTableCell>R Multiple</StyledTableCell>
               <StyledTableCell>Amount Used</StyledTableCell>
               <StyledTableCell>Remaining Amount</StyledTableCell>
+              <StyledTableCell>Delete</StyledTableCell>
+              <StyledTableCell>Edit</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -73,6 +78,16 @@ const BasicTable = ({ stocks }) => {
                 </TableCell>
                 <TableCell sx={alignMiddle}>{stock.amountUsed}</TableCell>
                 <TableCell sx={alignMiddle}>{stock.remainingAmt}</TableCell>
+                <TableCell sx={alignMiddle}>
+                  <Button variant="outlined" color="error">
+                    <DeleteRoundedIcon />
+                  </Button>
+                </TableCell>
+                <TableCell sx={alignMiddle}>
+                  <Button variant="outlined" color="secondary">
+                    <EditNoteRoundedIcon />
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

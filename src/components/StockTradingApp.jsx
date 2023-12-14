@@ -21,7 +21,7 @@ const StockTradingApp = () => {
       <Box py="20px" textAlign="center">
         <StockForm addStock={addStock} />
       </Box>
-      <Box width={1000} margin="auto" py="20px">
+      <Box margin="auto" py="20px">
         <BasicTable stocks={stocks} />
       </Box>
     </Container>
