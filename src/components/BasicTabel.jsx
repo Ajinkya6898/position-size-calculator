@@ -40,12 +40,12 @@ const BasicTable = ({ stocks, deleteStock, editStock }) => {
               <StyledTableCell>Stoploss</StyledTableCell>
               <StyledTableCell>Modifty SL</StyledTableCell>
               <StyledTableCell>Target</StyledTableCell>
-              <StyledTableCell>Position Size</StyledTableCell>
-              <StyledTableCell>Stoploss %</StyledTableCell>
-              <StyledTableCell>Target %</StyledTableCell>
+              <StyledTableCell>PS</StyledTableCell>
+              <StyledTableCell>SL</StyledTableCell>
+              <StyledTableCell>Target</StyledTableCell>
               <StyledTableCell>R Multiple</StyledTableCell>
               <StyledTableCell>Amount Used</StyledTableCell>
-              <StyledTableCell>Remaining Amount</StyledTableCell>
+              <StyledTableCell>Rem Amount</StyledTableCell>
               <StyledTableCell>Delete</StyledTableCell>
               <StyledTableCell>Edit</StyledTableCell>
             </TableRow>

@@ -4,6 +4,14 @@ import { Container, Typography, Box, Button } from "@mui/material";
 import StockForm from "./StockForm";
 import BasicTable from "./BasicTabel";
 
+const containerStyle = {
+  backgroundColor: "white",
+  mt: "50px",
+  width: "1400px",
+  margin: "auto",
+  padding: "0 20px",
+};
+
 const StockTradingApp = () => {
   const [stocks, setStocks] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
@@ -44,7 +52,7 @@ const StockTradingApp = () => {
   }, []);
 
   return (
-    <Container maxWidth={false} sx={{ backgroundColor: "white", mt: "50px" }}>
+    <Box sx={containerStyle}>
       <Box py="20px">
         <Typography variant="h5" textAlign="center">
           Position Size Calculator
@@ -65,7 +73,7 @@ const StockTradingApp = () => {
           editStock={editStock}
         />
       </Box>
-    </Container>
+    </Box>
   );
 };
 
