@@ -36,6 +36,7 @@ const StockForm = ({ addStock }) => {
 
   const calculateValues = () => {
     const targetLevel = +boughtPrice + +atr;
+    const modifySlLevel = +boughtPrice + +atr * 0.75;
     const halfOfAtr = +atr * 0.5;
     const stoplossLevel = +boughtPrice - halfOfAtr;
     const riskPerTrade = (totalAmount * riskPercentage) / 100;
@@ -45,6 +46,7 @@ const StockForm = ({ addStock }) => {
     const totalTradeAmt = +boughtPrice * positionSizeValue;
 
     addStock({
+      entry: boughtPrice,
       stockName,
       boughtPrice,
       atr,
@@ -52,6 +54,7 @@ const StockForm = ({ addStock }) => {
       riskPercentage,
       target: targetLevel,
       stopLoss: stoplossLevel,
+      modifySl: modifySlLevel,
       positionSize: positionSizeValue,
       amountUsed: totalTradeAmt,
       remainingAmt: totalAmount - totalTradeAmt,
@@ -59,7 +62,6 @@ const StockForm = ({ addStock }) => {
     setStockName("");
     setBoughtPrice("");
     setAtr("");
-    setTotalAmount("");
   };
 
   return (

@@ -44,7 +44,7 @@ const StockTradingApp = () => {
   }, []);
 
   return (
-    <Container sx={{ backgroundColor: "white", mt: "50px" }}>
+    <Container maxWidth={false} sx={{ backgroundColor: "white", mt: "50px" }}>
       <Box py="20px">
         <Typography variant="h5" textAlign="center">
           Position Size Calculator

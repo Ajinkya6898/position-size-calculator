@@ -36,10 +36,11 @@ const BasicTable = ({ stocks, deleteStock, editStock }) => {
             <TableRow>
               <StyledTableCell>#</StyledTableCell>
               <StyledTableCell>Symbol</StyledTableCell>
+              <StyledTableCell>Entry</StyledTableCell>
               <StyledTableCell>Stoploss</StyledTableCell>
+              <StyledTableCell>Modifty SL</StyledTableCell>
               <StyledTableCell>Target</StyledTableCell>
               <StyledTableCell>Position Size</StyledTableCell>
-
               <StyledTableCell>Stoploss %</StyledTableCell>
               <StyledTableCell>Target %</StyledTableCell>
               <StyledTableCell>R Multiple</StyledTableCell>
@@ -54,7 +55,9 @@ const BasicTable = ({ stocks, deleteStock, editStock }) => {
               <TableRow key={index}>
                 <TableCell sx={alignMiddle}>{index + 1}</TableCell>
                 <TableCell sx={alignMiddle}>{stock.stockName}</TableCell>
+                <TableCell sx={alignMiddle}>{stock.entry}</TableCell>
                 <TableCell sx={alignMiddle}>{stock.stopLoss}</TableCell>
+                <TableCell sx={alignMiddle}>{stock.modifySl}</TableCell>
                 <TableCell sx={alignMiddle}>{stock.target}</TableCell>
                 <TableCell sx={alignMiddle}>{stock.positionSize}</TableCell>
 
