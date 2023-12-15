@@ -56,6 +56,10 @@ const StockForm = ({ addStock }) => {
       amountUsed: totalTradeAmt,
       remainingAmt: totalAmount - totalTradeAmt,
     });
+    setStockName("");
+    setBoughtPrice("");
+    setAtr("");
+    setTotalAmount("");
   };
 
   return (
