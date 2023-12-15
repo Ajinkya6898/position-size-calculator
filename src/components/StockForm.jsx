@@ -8,10 +8,15 @@ const textFieldMargin = {
 };
 
 const StockForm = ({ addStock }) => {
+  const [stockName, setStockName] = useState("");
   const [boughtPrice, setBoughtPrice] = useState("");
   const [atr, setAtr] = useState("");
   const [totalAmount, setTotalAmount] = useState("200000");
   const [riskPercentage, setRiskPercentage] = useState("1");
+
+  const handleStockNameChange = (e) => {
+    setStockName(e.target.value);
+  };
 
   const handleBoughtPriceChange = (e) => {
     setBoughtPrice(e.target.value);
@@ -40,6 +45,7 @@ const StockForm = ({ addStock }) => {
     const totalTradeAmt = +boughtPrice * positionSizeValue;
 
     addStock({
+      stockName,
       boughtPrice,
       atr,
       totalAmount,
@@ -54,6 +60,14 @@ const StockForm = ({ addStock }) => {
 
   return (
     <Box py="20px">
+      <TextField
+        size="small"
+        sx={textFieldMargin}
+        placeholder="Stock Name"
+        value={stockName}
+        autoComplete="off"
+        onChange={handleStockNameChange}
+      />
       <TextField
         size="small"
         sx={textFieldMargin}

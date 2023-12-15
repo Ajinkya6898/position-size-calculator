@@ -35,6 +35,7 @@ const BasicTable = ({ stocks }) => {
           <TableHead>
             <TableRow>
               <StyledTableCell>#</StyledTableCell>
+              <StyledTableCell>Symbol</StyledTableCell>
               <StyledTableCell>Stoploss</StyledTableCell>
               <StyledTableCell>Target</StyledTableCell>
               <StyledTableCell>Position Size</StyledTableCell>
@@ -52,6 +53,7 @@ const BasicTable = ({ stocks }) => {
             {stocks.map((stock, index) => (
               <TableRow key={index}>
                 <TableCell sx={alignMiddle}>{index + 1}</TableCell>
+                <TableCell sx={alignMiddle}>{stock.stockName}</TableCell>
                 <TableCell sx={alignMiddle}>{stock.stopLoss}</TableCell>
                 <TableCell sx={alignMiddle}>{stock.target}</TableCell>
                 <TableCell sx={alignMiddle}>{stock.positionSize}</TableCell>
