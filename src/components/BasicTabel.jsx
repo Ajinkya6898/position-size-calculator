@@ -27,7 +27,7 @@ const alignMiddle = {
   textAlign: "center",
 };
 
-const BasicTable = ({ stocks }) => {
+const BasicTable = ({ stocks, deleteStock, editStock }) => {
   return (
     <>
       <TableContainer component={Paper}>
@@ -81,12 +81,20 @@ const BasicTable = ({ stocks }) => {
                 <TableCell sx={alignMiddle}>{stock.amountUsed}</TableCell>
                 <TableCell sx={alignMiddle}>{stock.remainingAmt}</TableCell>
                 <TableCell sx={alignMiddle}>
-                  <Button variant="outlined" color="error">
+                  <Button
+                    variant="outlined"
+                    color="error"
+                    onClick={() => deleteStock(index)}
+                  >
                     <DeleteRoundedIcon />
                   </Button>
                 </TableCell>
                 <TableCell sx={alignMiddle}>
-                  <Button variant="outlined" color="secondary">
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={() => editStock(index)}
+                  >
                     <EditNoteRoundedIcon />
                   </Button>
                 </TableCell>

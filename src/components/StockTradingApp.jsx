@@ -6,6 +6,7 @@ import BasicTable from "./BasicTabel";
 
 const StockTradingApp = () => {
   const [stocks, setStocks] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
 
   const clearAllEntries = () => {
     setStocks([]);
@@ -13,8 +14,28 @@ const StockTradingApp = () => {
   };
 
   const addStock = (stock) => {
+    if (editIndex !== null) {
+      const updatedStocks = [...stocks];
+      updatedStocks[editIndex] = stock;
+      setStocks(updatedStocks);
+      setEditIndex(null);
+    } else {
+      setStocks([...stocks, stock]);
+    }
+
     localStorage.setItem("stocks", JSON.stringify([...stocks, stock]));
-    setStocks([...stocks, stock]);
+  };
+
+  const deleteStock = (index) => {
+    const updatedStocks = [...stocks];
+    updatedStocks.splice(index, 1);
+    setStocks(updatedStocks);
+
+    localStorage.setItem("stocks", JSON.stringify(updatedStocks));
+  };
+
+  const editStock = (index) => {
+    setEditIndex(index);
   };
 
   useEffect(() => {
@@ -38,7 +59,11 @@ const StockTradingApp = () => {
         </Button>
       </Box>
       <Box margin="auto" py="20px">
-        <BasicTable stocks={stocks} />
+        <BasicTable
+          stocks={stocks}
+          deleteStock={deleteStock}
+          editStock={editStock}
+        />
       </Box>
     </Container>
   );
