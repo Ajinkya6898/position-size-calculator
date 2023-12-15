@@ -1,5 +1,5 @@
 // StockTradingApp.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Typography, Box } from "@mui/material";
 import StockForm from "./StockForm";
 import BasicTable from "./BasicTabel";
@@ -8,8 +8,14 @@ const StockTradingApp = () => {
   const [stocks, setStocks] = useState([]);
 
   const addStock = (stock) => {
+    localStorage.setItem("stocks", JSON.stringify([...stocks, stock]));
     setStocks([...stocks, stock]);
   };
+
+  useEffect(() => {
+    const savedStocks = JSON.parse(localStorage.getItem("stocks")) || [];
+    setStocks(savedStocks);
+  }, []);
 
   return (
     <Container sx={{ backgroundColor: "white", mt: "50px" }}>
