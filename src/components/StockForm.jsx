@@ -50,9 +50,6 @@ const StockForm = ({ addStock }) => {
       amountUsed: totalTradeAmt,
       remainingAmt: totalAmount - totalTradeAmt,
     });
-
-    // Update total amount for the next stock
-    setTotalAmount(totalAmount - totalTradeAmt);
   };
 
   return (
