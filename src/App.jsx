@@ -7,10 +7,22 @@ const App = () => {
     <>
       <StockTradingApp />
       <Toaster
-        position="top-right"
+        position="top-center"
         reverseOrder={false}
-        gutter={8}
+        gutter={12}
         duration={3000}
+        toastOptions={{
+          success: {
+            style: {
+              background: "#b9f6ca",
+            },
+          },
+          error: {
+            style: {
+              background: "#ffebee",
+            },
+          },
+        }}
       />
     </>
   );
