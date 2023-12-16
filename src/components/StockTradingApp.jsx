@@ -1,4 +1,3 @@
-// StockTradingApp.jsx
 import React, { useState, useEffect } from "react";
 import { Typography, Box, Button } from "@mui/material";
 import StockForm from "./StockForm";

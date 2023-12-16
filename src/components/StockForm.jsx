@@ -1,6 +1,6 @@
-// StockForm.jsx
 import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
+import formatNumber from "../utils/utils";
 
 const textFieldMargin = {
   mr: "20px",
@@ -44,7 +44,7 @@ const StockForm = ({ addStock }) => {
       riskPerTrade / (boughtPrice - stoplossLevel)
     );
     const totalTradeAmt = +boughtPrice * positionSizeValue;
-
+    const formattedTradeAmt = formatNumber(totalTradeAmt);
     addStock({
       entry: boughtPrice,
       stockName,
@@ -56,8 +56,8 @@ const StockForm = ({ addStock }) => {
       stopLoss: stoplossLevel,
       modifySl: modifySlLevel,
       positionSize: positionSizeValue,
-      amountUsed: totalTradeAmt,
-      remainingAmt: totalAmount - totalTradeAmt,
+      amountUsed: formattedTradeAmt,
+      remainingAmt: formatNumber(totalAmount - totalTradeAmt),
     });
     setStockName("");
     setBoughtPrice("");

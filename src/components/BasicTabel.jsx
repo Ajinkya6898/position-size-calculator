@@ -1,4 +1,3 @@
-// BasicTable.jsx
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
@@ -28,7 +27,7 @@ const alignMiddle = {
 };
 
 const BasicTable = ({ stocks, deleteStock, editStock }) => {
-    return (
+  return (
     <>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
