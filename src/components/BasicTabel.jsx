@@ -39,7 +39,7 @@ const BasicTable = ({ stocks, deleteStock, editStock }) => {
               <StyledTableCell>Stoploss</StyledTableCell>
               <StyledTableCell>Modifty SL</StyledTableCell>
               <StyledTableCell>Target</StyledTableCell>
-              <StyledTableCell>PS</StyledTableCell>
+              <StyledTableCell>Position Size</StyledTableCell>
               <StyledTableCell>SL</StyledTableCell>
               <StyledTableCell>Target</StyledTableCell>
               <StyledTableCell>R Multiple</StyledTableCell>
