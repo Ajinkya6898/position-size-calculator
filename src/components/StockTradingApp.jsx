@@ -1,8 +1,9 @@
 // StockTradingApp.jsx
 import React, { useState, useEffect } from "react";
-import { Container, Typography, Box, Button } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 import StockForm from "./StockForm";
 import BasicTable from "./BasicTabel";
+import toast from "react-hot-toast";
 
 const containerStyle = {
   backgroundColor: "white",
@@ -22,6 +23,7 @@ const StockTradingApp = () => {
   };
 
   const addStock = (stock) => {
+    toast.success("Added Stock Successfully");
     if (editIndex !== null) {
       const updatedStocks = [...stocks];
       updatedStocks[editIndex] = stock;
@@ -35,6 +37,7 @@ const StockTradingApp = () => {
   };
 
   const deleteStock = (index) => {
+    toast.success("Removed Stock Successfully");
     const updatedStocks = [...stocks];
     updatedStocks.splice(index, 1);
     setStocks(updatedStocks);

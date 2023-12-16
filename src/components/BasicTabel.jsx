@@ -28,7 +28,7 @@ const alignMiddle = {
 };
 
 const BasicTable = ({ stocks, deleteStock, editStock }) => {
-  return (
+    return (
     <>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
