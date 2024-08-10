@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Button } from "@mui/material";
+import { IconButton } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -9,7 +9,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
-import EditNoteRoundedIcon from "@mui/icons-material/EditNoteRounded";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -40,13 +39,11 @@ const BasicTable = ({ stocks, deleteStock, editStock }) => {
               <StyledTableCell>Modifty SL</StyledTableCell>
               <StyledTableCell>Target</StyledTableCell>
               <StyledTableCell>Position Size</StyledTableCell>
-              <StyledTableCell>SL</StyledTableCell>
-              <StyledTableCell>Target</StyledTableCell>
+              <StyledTableCell>SL %</StyledTableCell>
+              <StyledTableCell>Target %</StyledTableCell>
               <StyledTableCell>R Multiple</StyledTableCell>
               <StyledTableCell>Amount Used</StyledTableCell>
-              <StyledTableCell>Rem Amount</StyledTableCell>
               <StyledTableCell>Delete</StyledTableCell>
-              <StyledTableCell>Edit</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -81,24 +78,15 @@ const BasicTable = ({ stocks, deleteStock, editStock }) => {
                   ).toFixed(2)}
                 </TableCell>
                 <TableCell sx={alignMiddle}>{stock.amountUsed}</TableCell>
-                <TableCell sx={alignMiddle}>{stock.remainingAmt}</TableCell>
                 <TableCell sx={alignMiddle}>
-                  <Button
+                  <IconButton
+                    size="small"
                     variant="outlined"
                     color="error"
                     onClick={() => deleteStock(index)}
                   >
                     <DeleteRoundedIcon />
-                  </Button>
-                </TableCell>
-                <TableCell sx={alignMiddle}>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={() => editStock(index)}
-                  >
-                    <EditNoteRoundedIcon />
-                  </Button>
+                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}
